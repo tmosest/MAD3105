@@ -1,0 +1,278 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm, pgf, tikz} % Math packages
+\usetikzlibrary{arrows, automata}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhf{}
+\fancyhead[R]{Tyler O. Moses}
+\fancyhead[L]{MDA 3105}
+\fancyhead[C]{Discrete Mathematics II}
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Florida State University} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Assignment 3: Equivalence Relations \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Tyler Moses} % Your name
+
+\date{\normalsize January 31, 2018} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Exercise}
+
+Determine whether or not the below relations on the set $A = \{0,1,2,3\}$ are equivalence relations. If not, state all missing properties.
+
+$$R = \{(0,0),(1,1),(2,2),(2,1),(1,2)\}$$
+$$R = \{(3,1),(2,1),(1,2),(0,0),(2,2),(3,3),(1,1)\}$$
+$$R = \{(0,0),(1,1),(2,2),(3,3)\}$$
+
+\subsection{Solution}
+
+\textbf{(a)}
+
+$$R = \{(0,0),(1,1),(2,2),(2,1),(1,2)\}$$
+
+R is symmetric and transitive but not reflexive due to the fact that $(0,0) \not\in R$.
+
+\textbf{(b)}
+
+$$R = \{(3,1),(2,1),(1,2),(0,0),(2,2),(3,3),(1,1)\}$$
+
+R is reflexive but not symmetric due to the fact that $(3,1) \in R$ but $(1,3) \not\in R$. Nor is it transitive because 
+$(3,1) \in R \land (1,2) \in R$ but $(3,2) \not\in R$.
+
+\textbf{(c)}
+
+$$R = \{(0,0),(1,1),(2,2),(3,3)\}$$
+
+R is reflexive, symmetric, and transitive because it is the identity relation on A.
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\section{Exercise}
+
+Determine whether or not the below relations are equivalnce relations, if not state all properties.
+
+$$M_R = \begin{bmatrix}
+1 & 0 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 1 \end{bmatrix}$$
+
+$$M_R = \begin{bmatrix}
+1 & 1 & 1 \\
+1 & 0 & 0 \\
+1 & 0 & 1 \end{bmatrix}$$
+
+\subsection{Solution}
+
+For each of these let $M_R$ be treated as a zero indexed matrix as in most programming languages.
+
+\textbf{(a)}
+
+$$M_R = \begin{bmatrix}
+1 & 0 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 1 \end{bmatrix}$$
+
+$M_R$ is not reflexive due to the fact that $M_R[1][1] = 0$.
+
+$M_R$ is not symmetric due to the fact that $M_R[1][0] = 1 \land M_R[0][1] = 0$.
+
+$M_R$ is not transitive due to the fact that $M_R[1][2] = 1 \land M_R[2][1] = 1 \land M_R[1][1] = 0$.
+
+\textbf{(b)}
+
+$$M_R = \begin{bmatrix}
+1 & 1 & 1 \\
+1 & 0 & 0 \\
+1 & 0 & 1 \end{bmatrix}$$
+
+$M_R$ is not reflexive due to the fact that $M_R[1][1] = 0$.
+
+$M_R$ is not transitive due to the fact that $M_R[1][0] = 1 \land M_R[0][1] = 1 \land M_R[1][1] = 0$.
+
+$M_R$ is symmetric.
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\section{Exercise}
+
+What are the equivalence classes of the below bit strings for the equivalence
+relation, R, on the set of all bit strings of length 2 or more, where R consists of all
+pairs $(x, y)$ such that x and y are bit strings of length 2 or more that agree (are the
+same) except possibly (i.e. they may differ) in their first 2 bits. (You may describe the
+elements in the sets instead of listing them all out).
+
+(a) 1001 (b) 10 (c) 10111 
+
+\subsection{Solution}
+
+\textbf{(a) 1001} 
+
+$$ \{1001\} = \{ab01 \vert \forall a,b \in \{0,1\}\}$$
+
+\textbf{(b) 10} 
+
+$$ \{10\} = \{ab \vert \forall a,b \in \{0,1\}\}$$
+
+\textbf{(c) 10111} 
+
+$$ \{10111\} = \{ab111 \vert \forall a,b \in \{0,1\}\}$$
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\section{Exercise}
+
+4) Which of these collections of subsets are partitions of $A = \{a,b,c,d,e\}$? If not, why?
+
+(a) $\{a,b\},\{c\},\{d\}$
+
+(b) $\{a\},\{b,d\},\{c\},\emptyset$
+
+(c) $\{a,b,d\},\{c,d\},\{e\}$
+
+\subsection{Solution}
+
+\textbf{(a)}
+
+$$\{a,b\},\{c\},\{d\}$$
+
+While the subsets might be disjoint and non empty, the union of them is not A.
+
+\textbf{(b)}
+
+$$\{a\},\{b,d\},\{c\},\emptyset$$
+
+They are disjoint, but one of them is empty and their union is also not A.
+
+\textbf{(c)}
+
+$$\{a,b,d\},\{c,d\},\{e\}$$
+
+This time, they are empty and their union is A, but $d$ is in two sets making them not disjoint.
+
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+\section{Exercise}
+
+List the ordered pairs in the equivalence relations produced by the following
+partitions of $A = \{a,b,c\}$.
+
+(a) $\{\{a\},\{b\},\{c\}\}$
+
+(b) $\{\{c\},\{a,b\}\}$
+
+\subsection{Solution}
+
+\textbf{(a)}
+
+$$\{\{a\},\{b\},\{c\}\}$$
+
+This is the identity relation:
+
+$$\{(a,a),(b,b),(c,c)\}$$
+
+\textbf{(b)}
+
+$$\{\{c\},\{a,b\}\}$$
+
+This is not the identity relation but close:
+
+$$\{(a,a),(b,b)(a,b),(b,a),(c,c)\}$$
+
+
+%----------------------------------------------------------------------------------------
+%	END DOCUMENT
+%----------------------------------------------------------------------------------------
+
+\end{document}
